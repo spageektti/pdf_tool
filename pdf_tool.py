@@ -2,6 +2,7 @@ import argparse
 from pdf_utils.merge import merge_pdfs
 from pdf_utils.split import split_pdfs
 from pdf_utils.extract_text import extract_text
+from pdf_utils.rotate import rotate_pages
 
 def main():
     parser = argparse.ArgumentParser(description="PDF manipulation tool.")
@@ -25,6 +26,13 @@ def main():
         help="Extract text from a PDF and save it to a text file.",
         required=False
     )
+    parser.add_argument(
+        '-r', '--rotate',
+        nargs=4,
+        metavar=('input_pdf', 'output_pdf', 'rotation', 'pages'),
+        help="Rotate specified pages of a PDF. 'rotation' is the angle (90, 180, 270). 'pages' is a comma-separated list of page numbers or 'all'.",
+        required=False
+    )
 
     args = parser.parse_args()
 
@@ -46,6 +54,11 @@ def main():
     if args.extract:
         input_pdf, output_txt = args.extract
         extract_text(input_pdf, output_txt)
+    
+    if args.rotate:
+        input_pdf, output_pdf, rotation, pages = args.rotate
+        rotation = int(rotation)
+        rotate_pages(input_pdf, output_pdf, rotation, pages)
 
 if __name__ == "__main__":
     main()
