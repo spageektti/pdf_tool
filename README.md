@@ -2,6 +2,17 @@
 
 A command-line tool for manipulating PDF files. This tool supports merging, splitting, extracting text, rotating, adding watermarks, and encrypting PDFs.
 
+This `README.md` provides clear instructions for installation and usage of the PDF tool, ensuring that you can easily understand and leverage the tool's functionalities.
+
+### Summary of Provided Functionalities
+
+1. **Merge PDFs**: Combines multiple PDFs into a single file.
+2. **Split PDFs**: Splits a PDF into smaller files based on page count or parts.
+3. **Extract Text**: Extracts text from a PDF and saves it to a text file.
+4. **Rotate Pages**: Rotates specified pages of a PDF by a given angle.
+5. **Add Watermark**: Adds a watermark to each page of a PDF.
+6. **Encrypt PDF**: Encrypts a PDF with a password.
+
 ## Installation
 
 1. Clone the repository:
@@ -106,13 +117,3 @@ python pdf_tool.py -p input.pdf output.pdf password
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### Summary of Provided Functionalities
-
-1. **Merge PDFs**: Combines multiple PDFs into a single file.
-2. **Split PDFs**: Splits a PDF into smaller files based on page count or parts.
-3. **Extract Text**: Extracts text from a PDF and saves it to a text file.
-4. **Rotate Pages**: Rotates specified pages of a PDF by a given angle.
-5. **Add Watermark**: Adds a watermark to each page of a PDF.
-6. **Encrypt PDF**: Encrypts a PDF with a password.
-
-This `README.md` provides clear instructions for installation and usage of the PDF tool, ensuring that users can easily understand and leverage the tool's functionalities.
