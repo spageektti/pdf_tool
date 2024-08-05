@@ -3,6 +3,8 @@ from pdf_utils.merge import merge_pdfs
 from pdf_utils.split import split_pdfs
 from pdf_utils.extract_text import extract_text
 from pdf_utils.rotate import rotate_pages
+from pdf_utils.watermark import add_watermark
+from pdf_utils.encrypt import encrypt_pdf
 
 def main():
     parser = argparse.ArgumentParser(description="PDF manipulation tool.")
@@ -33,6 +35,20 @@ def main():
         help="Rotate specified pages of a PDF. 'rotation' is the angle (90, 180, 270). 'pages' is a comma-separated list of page numbers or 'all'.",
         required=False
     )
+    parser.add_argument(
+        '-w', '--watermark',
+        nargs=3,
+        metavar=('input_pdf', 'output_pdf', 'watermark_pdf'),
+        help="Add a watermark to each page of the input PDF.",
+        required=False
+    )
+    parser.add_argument(
+        '-p', '--encrypt',
+        nargs=3,
+        metavar=('input_pdf', 'output_pdf', 'password'),
+        help="Encrypt a PDF with a given password.",
+        required=False
+    )
 
     args = parser.parse_args()
 
@@ -59,6 +75,14 @@ def main():
         input_pdf, output_pdf, rotation, pages = args.rotate
         rotation = int(rotation)
         rotate_pages(input_pdf, output_pdf, rotation, pages)
+    
+    if args.watermark:
+        input_pdf, output_pdf, watermark_pdf = args.watermark
+        add_watermark(input_pdf, output_pdf, watermark_pdf)
+    
+    if args.encrypt:
+        input_pdf, output_pdf, password = args.encrypt
+        encrypt_pdf(input_pdf, output_pdf, password)
 
 if __name__ == "__main__":
     main()
