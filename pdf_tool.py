@@ -1,7 +1,7 @@
-# pdf_tool.py
 import argparse
 from pdf_utils.merge import merge_pdfs
 from pdf_utils.split import split_pdfs
+from pdf_utils.extract_text import extract_text
 
 def main():
     parser = argparse.ArgumentParser(description="PDF manipulation tool.")
@@ -18,6 +18,13 @@ def main():
         help="Split a PDF. 'split_type' can be 'every' or 'parts'. 'i' is the interval or number of parts.",
         required=False
     )
+    parser.add_argument(
+        '-e', '--extract',
+        nargs=2,
+        metavar=('input_pdf', 'output_txt'),
+        help="Extract text from a PDF and save it to a text file.",
+        required=False
+    )
 
     args = parser.parse_args()
 
@@ -27,7 +34,7 @@ def main():
             print("You need to specify at least two PDFs to merge.")
             return
         merge_pdfs(input_pdfs, output_pdf)
-
+    
     if args.split:
         input_pdf, output_dir, split_type, i = args.split
         i = int(i)
@@ -35,6 +42,10 @@ def main():
             print("Invalid split_type. Use 'every' or 'parts'.")
             return
         split_pdfs(input_pdf, output_dir, split_type, i)
+
+    if args.extract:
+        input_pdf, output_txt = args.extract
+        extract_text(input_pdf, output_txt)
 
 if __name__ == "__main__":
     main()
