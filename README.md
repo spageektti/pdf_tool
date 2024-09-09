@@ -1,5 +1,7 @@
 # PDF Tool
 
+![Zrzut ekranu_20240909_215018](https://github.com/user-attachments/assets/ddc90bb0-c63e-4655-b208-8b83a2c30b9a)
+
 A command-line tool for manipulating PDF files. This tool supports merging, splitting, extracting text, rotating, adding watermarks, and encrypting PDFs.
 
 This `README.md` provides clear instructions for installation and usage of the PDF tool, ensuring that you can easily understand and leverage the tool's functionalities.
